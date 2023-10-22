@@ -1,0 +1,25 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}Профиль{% endblock %}
+{% block content %}
+{% load static %}
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Редактирование профиля:</h2><br>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </form>
+
+            <a href="{% url 'account_profile' %}" class="btn btn-secondary" role="button">Закрыть</a>
+            <a href="{% url 'account_logout' %}" class="btn btn-danger" role="button">Выйти из аккаунта</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

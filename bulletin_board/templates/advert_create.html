@@ -1,0 +1,18 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+Создание нового объявления на нашей доске
+{% endblock title %}
+{% load static %}
+
+{% block content %}
+        <br>
+        <h3>Заполните пожалуйста необходимую графу для объявления:</h3><br>
+            <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+                    <input type="submit" value="Зафиксировать">
+            </form><br>
+        <a href="{% url 'mmorpg' %}">Можете возвратиться к основной странице</a>
+{% endblock content %}

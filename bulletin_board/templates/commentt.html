@@ -1,0 +1,17 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}Отклик{% endblock title %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <h3>Текст для написания пожелания!:</h3><br>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.media }}
+        {{ form.as_p }}
+		<input type="submit" value="Сохранить">
+
+	</form><br>
+    <a href="{% url 'mmorpg' %}">Вернуться на стартовую страницу</a>
+{% endblock content %}

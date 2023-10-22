@@ -1,0 +1,32 @@
+{% extends 'flatpages/default.html'%}
+{% load static %}
+
+{% block title %}
+Приветствую тебя дорогой гость!
+{% endblock title %}
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<br><br><br>
+<a href="{% url 'advert_create' %}">Сотворите новое написание</a>
+{% endif %}
+
+    <br><br>
+    {% if adverts %}
+        {% for advertisements in adverts %}
+            <a href="/advert/{{ advertisements.id }}" ><b>{{ advertisements.title }}</b></a><br>
+                Категория: {{ advertisements.get_category_display }}
+                <br/>
+            <span><b>Автор:  {{ advertisements.author }} |
+
+                Дата написания:  {{ advertisements.created_at|date:'d.M.Y' }} г.</b></span><br><br>
+        {% endfor %}
+    {% else %}
+        <br><br>
+        <h2>Объявлений нет!</h2>
+    {% endif %}
+
+
+{% endblock content %}
